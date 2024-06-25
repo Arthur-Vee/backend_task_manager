@@ -35,17 +35,24 @@ export default class DatabaseService {
     }
     async createTask(task: Task) {
         try {
+
             await client.connect()
-            await client.db("tasks_database").collection("tasks").insertMany([
-                {
-                    id: task.id,
-                    title: task.title,
-                    description: task.description,
-                    type: task.type,
-                    createdOn: task.createdOn,
-                    status: task.status,
-                }
-            ])
+            const checkingTaskExistance = await client.db("tasks_database").collection("tasks").countDocuments({ id: task.id });
+            console.log(checkingTaskExistance)
+            if (checkingTaskExistance <= 0) {
+                await client.db("tasks_database").collection("tasks").insertOne(
+                    {
+                        id: task.id,
+                        title: task.title,
+                        description: task.description,
+                        type: task.type,
+                        createdOn: task.createdOn,
+                        status: task.status,
+                    }
+                )
+                console.log("task created")
+            } else { console.log("Duplicate Task ID") }
+
         } finally {
             await client.close();
         }
@@ -53,7 +60,11 @@ export default class DatabaseService {
     async deleteTask(taskToDelete: Task) {
         try {
             await client.connect()
-            await client.db("tasks_database").collection("tasks").deleteOne({ id: taskToDelete.id })
+            const checkingTaskExistance = await client.db("tasks_database").collection("tasks").countDocuments({ id: taskToDelete.id });
+
+            if (checkingTaskExistance > 0) {
+                await client.db("tasks_database").collection("tasks").deleteOne({ id: taskToDelete.id })
+            }
 
         } finally {
             await client.close();
