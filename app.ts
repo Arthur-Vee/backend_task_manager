@@ -1,10 +1,10 @@
 import express, { ErrorRequestHandler } from "express";
 import { HttpError } from "http-errors";
-// var express = require('express');
 var createError = require('http-errors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var tasksRouter = require('./routes/tasks')
@@ -13,26 +13,23 @@ const port = 3000;
 
 var app = express();
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', (req: Express.Request, res: Response) => {
-//   const name = "req.query.name;" // Assuming you have a query parameter called "name"
-//   res.send(name)
-// });
 app.use("/", indexRouter)
 app.use('/tasks', tasksRouter)
 app.use("/static", express.static(path.join(__dirname, "public")))
 
-// catch 404 and forward to error handler
+
 app.use(function (req, res, next) {
   next(createError(404));
 });
