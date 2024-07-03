@@ -44,19 +44,18 @@ router.post("/", async (req: express.Request, res: express.Response) => {
 
     try {
         const createNewTask: Task = await req.body
-        const taskId = await database.createTask(createNewTask);
-        res.status(200).send(taskId)
+        await database.createTask(createNewTask);
+        res.status(200).send()
     } catch (error) {
         handleError(res, error)
     }
 })
 
 router.delete("/:id", async (req: express.Request, res: express.Response) => {
-    const taskId = req.params.id
     try {
-        var taskToDelete = taskId
-        await database.deleteTask(taskToDelete)
-        res.status(200).send()
+        await database.deleteTask(req.params.id)
+        const result = await database.getAllTasks();
+        res.status(200).json(result)
     } catch (error) {
         handleError(res, error)
     }
