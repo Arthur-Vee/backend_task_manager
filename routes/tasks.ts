@@ -45,7 +45,7 @@ router.post("/", async (req: express.Request, res: express.Response) => {
     try {
         const createNewTask: Task = await req.body
         const taskId = await database.createTask(createNewTask);
-        res.status(200).send(taskId)
+        res.status(200).send()
     } catch (error) {
         handleError(res, error)
     }
@@ -56,7 +56,8 @@ router.delete("/:id", async (req: express.Request, res: express.Response) => {
     try {
         var taskToDelete = taskId
         await database.deleteTask(taskToDelete)
-        res.status(200).send()
+        const result = await database.getAllTasks()
+        res.status(200).send(result)
     } catch (error) {
         handleError(res, error)
     }
@@ -64,10 +65,9 @@ router.delete("/:id", async (req: express.Request, res: express.Response) => {
 
 router.patch("/", async (req: express.Request, res: express.Response) => {
     const updatedTaskData: Task = await req.body
-
     try {
-        await database.updateTask(updatedTaskData)
-        res.status(200).send(JSON.stringify(updatedTaskData.id))
+        const result = await database.updateTask(updatedTaskData)
+        res.status(200).send(result)
     } catch (error) {
         handleError(res, error)
     }
