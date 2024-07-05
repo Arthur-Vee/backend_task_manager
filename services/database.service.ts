@@ -90,7 +90,7 @@ export default class DatabaseService {
         await connectToDatabase()
         const matchingTask = await TaskModel.exists({ id: updatedDataTask.id })
         if (matchingTask) {
-            await TaskModel.findOne({ id: updatedDataTask.id })
+            await TaskModel.findOneAndUpdate({ id: updatedDataTask.id }, updatedDataTask)
         } else {
             throw new TaskNotFoundError()
         }
