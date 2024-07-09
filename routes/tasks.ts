@@ -16,7 +16,7 @@ async function initializeDatabase() {
 }
 initializeDatabase().catch(console.error)
 
-router.get("/", async (res: express.Response) => {
+router.get("/", async (req:express.Request, res: express.Response) => {
     try {
         const result = await database.getAllTasks()
         res.status(200).json(result)

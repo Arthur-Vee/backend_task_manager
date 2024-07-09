@@ -1,7 +1,6 @@
 import express, { ErrorRequestHandler } from "express"
 import { HttpError } from "http-errors"
 import mongoose from "mongoose"
-import DatabaseService from "./services/database.service"
 
 var createError = require('http-errors')
 var path = require('path')
