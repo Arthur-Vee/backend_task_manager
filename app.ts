@@ -1,7 +1,6 @@
 import express, { ErrorRequestHandler } from "express"
 import { HttpError } from "http-errors"
 import mongoose from "mongoose"
-import DatabaseService from "./services/database.service"
 
 var createError = require('http-errors')
 var path = require('path')
@@ -11,6 +10,7 @@ var cors = require('cors')
 
 var indexRouter = require('./routes/index')
 var tasksRouter = require('./routes/tasks')
+var usersRouter = require('./routes/users')
 
 const uri = `${process.env.DB_CONNCETION_STRING}`
 const options = {
@@ -34,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use("/", indexRouter)
 app.use('/tasks', tasksRouter)
+app.use('/users', usersRouter)
 app.use("/static", express.static(path.join(__dirname, "public")))
 
 mongoose.connect(uri, options).then(() => { console.log("Connedted to database") }).catch((error) => {

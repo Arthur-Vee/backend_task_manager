@@ -7,7 +7,7 @@ export default class ErrorHandler extends Error {
 
     constructor(httpCode: StatusCodes = StatusCodes.INTERNAL_SERVER_ERROR) {
         super()
-        Object.setPrototypeOf(this, new.target.prototype)//check if needed
+        Object.setPrototypeOf(this, new.target.prototype)
         this.httpCode = httpCode
         Error.captureStackTrace(this)
     }

@@ -5,12 +5,12 @@ import { v4 as uuidv4 } from 'uuid'
 import TaskNotFoundError from "../errors/taskNotFoundError"
 import ErrorHandler from "../errors/errorHandler"
 
-mongoose.connection.on('connected', () => console.log('connected'))
-mongoose.connection.on('open', () => console.log('open'))
-mongoose.connection.on('disconnected', () => console.log('disconnected'))
-mongoose.connection.on('reconnected', () => console.log('reconnected'))
-mongoose.connection.on('disconnecting', () => console.log('disconnecting'))
-mongoose.connection.on('close', () => console.log('close'))
+mongoose.connection.on('connected', () => console.log('Task: connected'))
+mongoose.connection.on('open', () => console.log('Task: open'))
+mongoose.connection.on('disconnected', () => console.log('Task: disconnected'))
+mongoose.connection.on('reconnected', () => console.log('Task: reconnected'))
+mongoose.connection.on('disconnecting', () => console.log('Task: disconnecting'))
+mongoose.connection.on('close', () => console.log('Task: close'))
 
 const taskSchema = new mongoose.Schema({
     id: String,
@@ -20,9 +20,10 @@ const taskSchema = new mongoose.Schema({
     createdOn: String,
     status: String,
 })
+
 const TaskModel = mongoose.model('Task', taskSchema)
 
-export default class DatabaseService {
+export default class TasksService {
     async getAllTasks() {
         return await TaskModel.find({})
     }
@@ -58,7 +59,11 @@ export default class DatabaseService {
         }
     }
     async updateTask(updatedDataTask: Task) {
-        return await TaskModel.findOneAndUpdate({ id: updatedDataTask.id }, updatedDataTask, { new: true })
+        const findAndUpdateTask = await TaskModel.findOneAndUpdate({ id: updatedDataTask.id }, updatedDataTask, { new: true })
+        if(findAndUpdateTask == null || findAndUpdateTask == undefined){
+            throw new ErrorHandler()
+        }
+        return findAndUpdateTask
     }
 }
 
