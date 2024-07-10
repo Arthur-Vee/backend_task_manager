@@ -1,50 +1,43 @@
-import express from "express";
-import DatabaseService from "../services/database.service";
-import { Task } from "../models/task.model";
-import ErrorHandler from "../errors/errorHandler";
+import express from "express"
+import DatabaseService from "../services/database.service"
+import { Task } from "../models/task.model"
+import ErrorHandler from "../errors/errorHandler"
 
-const router = express.Router();
-let database: DatabaseService;
-
+const router = express.Router()
+let database: DatabaseService
 
 // Initialize database
 async function initializeDatabase() {
     try {
-        database = new DatabaseService();
+        database = new DatabaseService()
     } catch (error) {
-        console.error("Error connecting to database:", error);
+        console.error("Error connecting to database:", error)
     }
 }
+initializeDatabase().catch(console.error)
 
-initializeDatabase().catch(console.error);
-
-
-router.get("/", async (req: express.Request, res: express.Response) => {
-
+router.get("/", async (req:express.Request, res: express.Response) => {
     try {
-        const result = await database.getAllTasks();
-        res.status(200).json(result);
+        const result = await database.getAllTasks()
+        res.status(200).json(result)
     } catch (error) {
         handleError(res, error)
     }
 })
 
 router.get("/:id", async (req: express.Request, res: express.Response) => {
-
     try {
-        const result = await database.getIndividualTask(req.params.id);
-        res.status(200).json(result);
+        const result = await database.getIndividualTask(req.params.id)
+        res.status(200).json(result)
     } catch (error) {
         handleError(res, error)
     }
-
 })
 
 router.post("/", async (req: express.Request, res: express.Response) => {
-
     try {
         const createNewTask: Task = await req.body
-        const taskId = await database.createTask(createNewTask);
+        const taskId = await database.createTask(createNewTask)
         res.status(200).send()
     } catch (error) {
         handleError(res, error)
@@ -64,10 +57,10 @@ router.delete("/:id", async (req: express.Request, res: express.Response) => {
 })
 
 router.patch("/", async (req: express.Request, res: express.Response) => {
-    const updatedTaskData: Task = await req.body
+    const updatedTaskData: Task = req.body
     try {
         const result = await database.updateTask(updatedTaskData)
-        res.status(200).send(result)
+        res.status(200).json(result)
     } catch (error) {
         handleError(res, error)
     }
@@ -75,9 +68,10 @@ router.patch("/", async (req: express.Request, res: express.Response) => {
 
 function handleError(res: express.Response, error: unknown) {
     if (error instanceof ErrorHandler) {
-        res.status(error.httpCode).send();
+        res.status(error.httpCode).send()
     } else {
-        res.status(500).send();
+        res.status(500).send()
     }
 }
-module.exports = router;
+
+module.exports = router
