@@ -14,7 +14,7 @@ var usersRouter = require('./routes/users')
 
 const uri = `${process.env.DB_CONNCETION_STRING}`
 const options = {
-  dbName: 'tasks_database',
+  dbName: `${process.env.DATABASE_NAME}`,
 }
 
 const port = 3000

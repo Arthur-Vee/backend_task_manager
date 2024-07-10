@@ -4,17 +4,7 @@ import { User } from "../models/user.model"
 import ErrorHandler from "../errors/errorHandler"
 
 const router = express.Router()
-let database: DatabaseService
-
-// Initialize database
-async function initializeDatabase() {
-    try {
-        database = new DatabaseService()
-    } catch (error) {
-        console.error("Error connecting to database:", error)
-    }
-}
-initializeDatabase().catch(console.error)
+const database = new DatabaseService
 
 router.get('/', async (req: express.Request, res: express.Response) => {
     var getAllUsers = await database.getAllUsers()
