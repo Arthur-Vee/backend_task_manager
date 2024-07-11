@@ -19,6 +19,7 @@ const taskSchema = new mongoose.Schema({
     type: String,
     createdOn: String,
     status: String,
+    assignedTo:String
 })
 
 const TaskModel = mongoose.model('Task', taskSchema)
@@ -42,6 +43,7 @@ export default class TasksService {
             description: task.description,
             type: task.type,
             createdOn: new Date(),
+            assignedTo: task.assignedTo,
             status: "Active",
         });
         if (creatingTask) {
