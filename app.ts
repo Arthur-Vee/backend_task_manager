@@ -10,10 +10,11 @@ var cors = require('cors')
 
 var indexRouter = require('./routes/index')
 var tasksRouter = require('./routes/tasks')
+var usersRouter = require('./routes/users')
 
 const uri = `${process.env.DB_CONNCETION_STRING}`
 const options = {
-  dbName: 'tasks_database',
+  dbName: `${process.env.DATABASE_NAME}`,
 }
 
 const port = 3000
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use("/", indexRouter)
 app.use('/tasks', tasksRouter)
+app.use('/users', usersRouter)
 app.use("/static", express.static(path.join(__dirname, "public")))
 
 mongoose.connect(uri, options).then(() => { console.log("Connedted to database") }).catch((error) => {

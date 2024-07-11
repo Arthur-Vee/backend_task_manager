@@ -1,20 +1,10 @@
 import express from "express"
-import DatabaseService from "../services/database.service"
+import DatabaseService from "../services/tasks.service"
 import { Task } from "../models/task.model"
 import ErrorHandler from "../errors/errorHandler"
 
 const router = express.Router()
-let database: DatabaseService
-
-// Initialize database
-async function initializeDatabase() {
-    try {
-        database = new DatabaseService()
-    } catch (error) {
-        console.error("Error connecting to database:", error)
-    }
-}
-initializeDatabase().catch(console.error)
+const database = new DatabaseService
 
 router.get("/", async (req:express.Request, res: express.Response) => {
     try {
@@ -37,7 +27,7 @@ router.get("/:id", async (req: express.Request, res: express.Response) => {
 router.post("/", async (req: express.Request, res: express.Response) => {
     try {
         const createNewTask: Task = await req.body
-        const taskId = await database.createTask(createNewTask)
+        await database.createTask(createNewTask)
         res.status(200).send()
     } catch (error) {
         handleError(res, error)
@@ -50,7 +40,7 @@ router.delete("/:id", async (req: express.Request, res: express.Response) => {
         var taskToDelete = taskId
         await database.deleteTask(taskToDelete)
         const result = await database.getAllTasks()
-        res.status(200).send(result)
+        res.status(200).json(result)
     } catch (error) {
         handleError(res, error)
     }
