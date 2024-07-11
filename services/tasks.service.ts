@@ -19,7 +19,7 @@ const taskSchema = new mongoose.Schema({
     type: String,
     createdOn: String,
     status: String,
-    assignedTo:String
+    assignedTo: String
 })
 
 const TaskModel = mongoose.model('Task', taskSchema)
@@ -62,7 +62,7 @@ export default class TasksService {
     }
     async updateTask(updatedDataTask: Task) {
         const findAndUpdateTask = await TaskModel.findOneAndUpdate({ id: updatedDataTask.id }, updatedDataTask, { new: true })
-        if(findAndUpdateTask == null || findAndUpdateTask == undefined){
+        if (findAndUpdateTask == null || findAndUpdateTask == undefined) {
             throw new ErrorHandler()
         }
         return findAndUpdateTask
