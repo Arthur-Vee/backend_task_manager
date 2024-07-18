@@ -45,7 +45,7 @@ export default class TasksService {
             createdOn: new Date(),
             assignedTo: task.assignedTo,
             status: "Active",
-        });
+        })
         if (creatingTask) {
             return generatedId
         } else {

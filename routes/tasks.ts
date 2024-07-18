@@ -6,7 +6,7 @@ import ErrorHandler from "../errors/errorHandler"
 const router = express.Router()
 const database = new DatabaseService
 
-router.get("/", async (req:express.Request, res: express.Response) => {
+router.get("/", async (req: express.Request, res: express.Response) => {
     try {
         const result = await database.getAllTasks()
         res.status(200).json(result)
