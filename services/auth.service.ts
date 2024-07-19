@@ -5,18 +5,18 @@ export default class AuthService {
 
 
     async signInUser(user: any) {
-        const verifyedUser = await UserModel.findOne({ username: user.username })
-        const fetchedPassword: string = verifyedUser?.password as string
+        const verifiedUser = await UserModel.findOne({ username: user.username })
+        const fetchedPassword: string = verifiedUser?.password as string
         const logInData = {
             isLoogedIn: "true",
-            userId: verifyedUser?.id
+            userId: verifiedUser?.id
         }
 
-        if (verifyedUser === null || undefined) {
+        if (verifiedUser === null || undefined) {
             throw Error
         } else {
-            const verifyedPass = bcrypt.compare(user.password, fetchedPassword)
-            if (await verifyedPass) {
+            const verifiedPass = bcrypt.compare(user.password, fetchedPassword)
+            if (await verifiedPass) {
                 return logInData
             } else {
                 throw Error
