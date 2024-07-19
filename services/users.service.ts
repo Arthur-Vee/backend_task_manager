@@ -15,8 +15,8 @@ mongoose.connection.on('close', () => console.log('User: close'))
 
 export default class UserService {
 
-    async getAllUsers() {
-        return await UserModel.find({}, {
+    getAllUsers() {
+        return UserModel.find({}, {
             _id: 0,
             id: 1,
             username: 1,
@@ -24,13 +24,32 @@ export default class UserService {
             lastName: 1
         })
     }
-    async getUserById(userId: string) {
-        var user = await UserModel.find({ id: userId }, {
+
+    getUserById(userId: string) {
+        var user = UserModel.find({ id: userId }, {
             _id: 0,
             username: 1,
             firstName: 1,
             lastName: 1
         })
         return user
+    }
+
+    async createUser(user: User) {
+        const id = uuidv4()
+        const hashedPassword = await bcrypt.hash(user.password, 10);
+        const token = "true"
+        const creatingUser = await UserModel.create({
+            id: id,
+            username: user.username,
+            password: hashedPassword,
+            firstName: user.firstName,
+            lastName: user.lastName,
+        });
+        if (creatingUser) {
+            return { id, token }
+        } else {
+            throw new ErrorHandler()
+        }
     }
 }

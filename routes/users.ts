@@ -23,4 +23,19 @@ router.post("/:id", async (req: express.Request, res: express.Response) => {
     } else (console.log("unauthorised"))
 })
 
+router.post('/', async (req: express.Request, res: express.Response) => {
+    try {
+        const createNewUser: User = {
+            username: req.body.username,
+            password: req.body.password,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName
+        }
+        const userId = await database.createUser(createNewUser)
+        res.status(200).json(userId)
+    } catch (error) {
+        res.status(500).send()
+    }
+})
+
 module.exports = router
