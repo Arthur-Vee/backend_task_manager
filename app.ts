@@ -8,9 +8,10 @@ var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 var cors = require('cors')
 
-var indexRouter = require('./routes/index')
-var tasksRouter = require('./routes/tasks')
-var usersRouter = require('./routes/users')
+const indexRouter = require('./routes/index')
+const tasksRouter = require('./routes/tasks')
+const usersRouter = require('./routes/users')
+const loginRouter = require('./routes/login')
 
 const uri = `${process.env.DB_CONNCETION_STRING}`
 const options = {
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use("/", indexRouter)
 app.use('/tasks', tasksRouter)
 app.use('/users', usersRouter)
+app.use('/login', loginRouter)
 app.use("/static", express.static(path.join(__dirname, "public")))
 
 mongoose.connect(uri, options).then(() => { console.log("Connedted to database") }).catch((error) => {

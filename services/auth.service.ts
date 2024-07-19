@@ -1,0 +1,27 @@
+import { UserModel } from "../models/user.model"
+import * as bcrypt from 'bcrypt'
+
+export default class AuthService {
+
+
+    async signInUser(user: any) {
+        const verifiedUser = await UserModel.findOne({ username: user.username })
+        const fetchedPassword: string = verifiedUser?.password as string
+        const logInData = {
+            isLoogedIn: "true",
+            userId: verifiedUser?.id
+        }
+
+        if (verifiedUser === null || undefined) {
+            throw Error
+        } else {
+            const verifiedPass = bcrypt.compare(user.password, fetchedPassword)
+            if (await verifiedPass) {
+                return logInData
+            } else {
+                throw Error
+            }
+        }
+
+    }
+}
