@@ -25,7 +25,7 @@ export default class UserService {
         })
     }
     async getUserById(userId: string) {
-        var user = await UserModel.find({ id: userId }, {
+        var user = await UserModel.findOne({ id: userId }, {
             _id: 0,
             username: 1,
             firstName: 1,
