@@ -1,10 +1,11 @@
+import { Auth } from "../models/auth.model"
 import { UserModel } from "../models/user.model"
 import * as bcrypt from 'bcrypt'
 
 export default class AuthService {
 
 
-    async signInUser(user: any) {
+    async signInUser(user: Auth) {
         const verifiedUser = await UserModel.findOne({ username: user.username })
         const fetchedPassword: string = verifiedUser?.password as string
         const logInData = {

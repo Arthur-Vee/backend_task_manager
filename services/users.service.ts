@@ -26,7 +26,7 @@ export default class UserService {
     }
 
     getUserById(userId: string) {
-        var user = UserModel.find({ id: userId }, {
+        var user = UserModel.findOne({ id: userId }, {
             _id: 0,
             username: 1,
             firstName: 1,
