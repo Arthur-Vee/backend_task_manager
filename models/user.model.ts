@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
     password: String,
     firstName: String,
     lastName: String,
+    roles: [String]
 })
 
 export const UserModel = mongoose.model('User', userSchema)

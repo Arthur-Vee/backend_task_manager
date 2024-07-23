@@ -15,6 +15,8 @@ mongoose.connection.on('close', () => console.log('User: close'))
 
 export default class UserService {
 
+    roles:string [] = ["Admin", "Manager", "User"]
+
     getAllUsers() {
         return UserModel.find({}, {
             _id: 0,
@@ -30,7 +32,8 @@ export default class UserService {
             _id: 0,
             username: 1,
             firstName: 1,
-            lastName: 1
+            lastName: 1,
+            roles: 1
         })
         return user
     }
@@ -45,7 +48,8 @@ export default class UserService {
             password: hashedPassword,
             firstName: user.firstName,
             lastName: user.lastName,
-        });
+            roles: this.roles[2] // default role is (User)
+        })
         if (creatingUser) {
             return { id, token }
         } else {
