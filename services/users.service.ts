@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import { User, UserModel } from "../models/user.model"
+import { User, UserModel, userRoles } from "../models/user.model"
 import ErrorHandler from "../errors/errorHandler"
 import { v4 as uuidv4 } from "uuid"
 import * as bcrypt from 'bcrypt'
@@ -12,10 +12,7 @@ mongoose.connection.on('reconnected', () => console.log('User: reconnected'))
 mongoose.connection.on('disconnecting', () => console.log('User: disconnecting'))
 mongoose.connection.on('close', () => console.log('User: close'))
 
-
 export default class UserService {
-
-    roles:string [] = ["Admin", "Manager", "User"]
 
     getAllUsers() {
         return UserModel.find({}, {
@@ -48,7 +45,7 @@ export default class UserService {
             password: hashedPassword,
             firstName: user.firstName,
             lastName: user.lastName,
-            roles: this.roles[2] // default role is (User)
+            roles: userRoles.user
         })
         if (creatingUser) {
             return { id, token }
