@@ -6,10 +6,10 @@ export type User = {
     firstName: string,
     lastName: string,
 }
-export enum userRoles {
-    admin = 1,
-    manager = 2,
-    user = 3,
+export enum Roles {
+    ADMIN = "ADMIN",
+    MANAGER = "MANAGER",
+    USER = "USER"
 }
 
 const userSchema = new mongoose.Schema({
@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     password: String,
     firstName: String,
     lastName: String,
-    roles: [Number]
+    roles: [String]
 })
 
 export const UserModel = mongoose.model('User', userSchema)
