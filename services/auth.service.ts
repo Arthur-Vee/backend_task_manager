@@ -12,7 +12,6 @@ export default class AuthService {
             isLoogedIn: "true",
             userId: verifiedUser?.id
         }
-
         if (verifiedUser === null || undefined) {
             throw Error
         } else {
@@ -23,6 +22,9 @@ export default class AuthService {
                 throw Error
             }
         }
-
+    }
+    async verifyAdmin(adminToken: string) {
+        const getUser = await UserModel.findOne({ id: adminToken })
+        return getUser?.roles.includes("ADMIN")
     }
 }
