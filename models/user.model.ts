@@ -22,3 +22,8 @@ const userSchema = new mongoose.Schema({
 })
 
 export const UserModel = mongoose.model('User', userSchema)
+
+export type UpdateUserData =  {
+    updatedUserId:string,
+    updatedUserRoles:string[]
+}

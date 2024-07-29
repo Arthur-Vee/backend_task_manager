@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import { User, UserModel, Roles } from "../models/user.model"
+import { User, UserModel, Roles, UpdateUserData } from "../models/user.model"
 import ErrorHandler from "../errors/errorHandler"
 import { v4 as uuidv4 } from "uuid"
 import * as bcrypt from 'bcrypt'
@@ -45,12 +45,15 @@ export default class UserService {
             password: hashedPassword,
             firstName: user.firstName,
             lastName: user.lastName,
-            roles:[Roles.USER]
+            roles: [Roles.USER]
         })
         if (creatingUser) {
             return { id, token }
         } else {
             throw new ErrorHandler()
         }
+    }
+    async updateUser(updatedUserData: UpdateUserData) {
+        await UserModel.findOneAndUpdate({ id: updatedUserData.updatedUserId }, { roles: updatedUserData.updatedUserRoles }, { new: true })
     }
 }

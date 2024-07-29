@@ -1,10 +1,12 @@
 import express from "express"
 import DatabaseService from "../services/users.service"
-import { User } from "../models/user.model"
+import AuthService from "../services/auth.service"
+import { User, UpdateUserData } from "../models/user.model"
 import ErrorHandler from "../errors/errorHandler"
 
 const router = express.Router()
 const database = new DatabaseService
+const auth = new AuthService
 
 router.get('/', async (req: express.Request, res: express.Response) => {
     var getAllUsers = await database.getAllUsers()
@@ -21,6 +23,21 @@ router.post("/:id", async (req: express.Request, res: express.Response) => {
         }
 
     } else (console.log("unauthorised"))
+})
+router.patch("/", async (req: express.Request, res: express.Response) => {
+    var adminToken = req.body.adminToken
+    var userDataToUpdate: UpdateUserData = req.body.updatedUserData
+    var isAdmin = await auth.verifyAdmin(adminToken)
+    if (isAdmin) {
+        try {
+            await database.updateUser(userDataToUpdate)
+            res.status(200).json("User Updated")
+        } catch (error) {
+            res.status(500).send()
+        }
+    } else {
+        res.status(401).send()
+    }
 })
 
 router.post('/', async (req: express.Request, res: express.Response) => {
