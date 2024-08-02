@@ -15,6 +15,7 @@ router.post("/", async (req: express.Request, res: express.Response) => {
         res.status(200).json({
             id: response.userId,
             token: response.isLoogedIn,
+            user: response.user
         })
     } catch (error) {
         return res.status(401).json()

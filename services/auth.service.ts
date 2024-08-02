@@ -1,6 +1,7 @@
 import { Auth } from "../models/auth.model"
 import { UserModel } from "../models/user.model"
 import * as bcrypt from 'bcrypt'
+import UserService from "../services/users.service"
 
 export default class AuthService {
 
@@ -8,9 +9,18 @@ export default class AuthService {
     async signInUser(user: Auth) {
         const verifiedUser = await UserModel.findOne({ username: user.username })
         const fetchedPassword: string = verifiedUser?.password as string
+
+        const returnUser = await UserModel.findOne({ username: user.username }, {
+            _id: 0,
+            username: 1,
+            firstName: 1,
+            lastName: 1,
+            roles: 1
+        })
         const logInData = {
             isLoogedIn: "true",
-            userId: verifiedUser?.id
+            userId: verifiedUser?.id,
+            user: returnUser
         }
         if (verifiedUser === null || undefined) {
             throw Error
