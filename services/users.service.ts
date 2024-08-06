@@ -35,20 +35,26 @@ export default class UserService {
         return user
     }
 
-    async createUser(user: User) {
+    async createUser(createUser: User) {
         const id = uuidv4()
-        const hashedPassword = await bcrypt.hash(user.password, 10);
+        const hashedPassword = await bcrypt.hash(createUser.password, 10);
         const token = "true"
         const creatingUser = await UserModel.create({
             id: id,
-            username: user.username,
+            username: createUser.username,
             password: hashedPassword,
-            firstName: user.firstName,
-            lastName: user.lastName,
+            firstName: createUser.firstName,
+            lastName: createUser.lastName,
             roles: [Roles.USER]
         })
+        const user = {
+            username: createUser.username,
+            firstName: createUser.firstName,
+            lastName: createUser.lastName,
+            roles: [Roles.USER]
+        }
         if (creatingUser) {
-            return { id, token }
+            return { id, token, user }
         } else {
             throw new ErrorHandler()
         }

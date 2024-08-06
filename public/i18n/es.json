@@ -1,0 +1,75 @@
+{
+    "HOME": {
+        "WELCOME": "Bienvenido",
+        "TASK_LIST": "Lista de tareas",
+        "USERS_LIST": "Lista de usuarios",
+        "CREATE_TASK": "Crear tarea",
+        "SIGN_OUT": "Cerrar sesión",
+        "LANGUAGES": "Idiomas"
+    },
+    "CREATE_TASK": {
+        "TITLE": "Crear tarea",
+        "TASK_TITLE": "Título",
+        "DESCRIPTION": "Descripción",
+        "TYPE": "Tipo",
+        "TYPE_OPTIONS_PERSONAL": "Personal",
+        "TYPE_OPTIONS_WORK": "Trabajo",
+        "ASSIGNED_TO": "Asignado a",
+        "ERROR_REQUIRED": "es obligatorio",
+        "UNASSIGNED": "No asignado"
+    },
+    "USERS": {
+        "TITLE": "Usuarios",
+        "DETAILS_BUTTON": "Detalles del usuario"
+    },
+    "USER_DETAILS": {
+        "ROLE": "Rol",
+        "NONE": "Ninguno",
+        "ROLE_DEFAULT": "Usuario (predeterminado)",
+        "ROLE_MANAGER": "Gerente",
+        "SAVE_BUTTON": "Guardar cambios",
+        "EDIT_BUTTON": "Editar"
+    },
+    "TASK": {
+        "TITLE": "Tarea",
+        "DETAILS": "Detalles de la tarea",
+        "DETAILS_BUTTON": "Detalles de la tarea",
+        "DELETE_BUTTON": "Eliminar tarea",
+        "EDIT_BUTTON": "Editar tarea",
+        "SAVE_BUTTON": "Guardar cambios",
+        "DESCRIPTION": "Descripción",
+        "ASSIGNED_TO": "Asignado a",
+        "TYPE": "Tipo de tarea",
+        "TYPE_OPTIONS_PERSONAL": "Personal",
+        "TYPE_OPTIONS_WORK": "Trabajo",
+        "STATUS": "Estado",
+        "STATUS_AWAITING": "En espera",
+        "STATUS_ACTIVE": "Activa",
+        "STATUS_DONE": "Hecho",
+        "CREATED_ON": "Creado en",
+        "STATUS_OPTIONS_TODO": "Por hacer",
+        "STATUS_OPTIONS_IN_PROGRESS": "En progreso",
+        "STATUS_OPTIONS_DONE": "Hecho"
+    },
+    "LOGIN": {
+        "TITLE": "Iniciar sesión",
+        "USERNAME": "Nombre de usuario",
+        "PASSWORD": "Contraseña",
+        "SIGN_IN": "Iniciar sesión",
+        "QUESTION": "¿No tienes una cuenta?",
+        "ERROR_INVALID_CREDENTIALS": "Nombre de usuario o contraseña inválidos",
+        "REGISTER_BUTTON": "Registrarse"
+    },
+    "REGISTER": {
+        "TITLE": "Registrarse",
+        "USERNAME": "Nombre de usuario",
+        "PASSWORD": "Contraseña",
+        "FIRST_NAME": "Nombre",
+        "LAST_NAME": "Apellido",
+        "REGISTER_BUTTON": "Registrarse",
+        "BACK_BUTTON": "Atrás"
+    },
+    "ERROR": {
+        "IS_REQUIRED": "es obligatorio"
+    }
+}

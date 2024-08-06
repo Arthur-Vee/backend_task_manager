@@ -1,0 +1,75 @@
+{
+    "HOME": {
+        "WELCOME": "Welcome",
+        "TASK_LIST": "Task list",
+        "USERS_LIST": "Users list",
+        "CREATE_TASK": "Create task",
+        "SIGN_OUT": "Sign out",
+        "LANGUAGES": "Languages"
+    },
+    "CREATE_TASK": {
+        "TITLE": "Create task",
+        "TASK_TITLE": "Title",
+        "DESCRIPTION": "Description",
+        "TYPE": "Type",
+        "TYPE_OPTIONS_PERSONAL": "Personal",
+        "TYPE_OPTIONS_WORK": "Work",
+        "ASSIGNED_TO": "Assigned to",
+        "ERROR_REQUIRED": "is required",
+        "UNASSIGNED": "Unassigned"
+    },
+    "USERS": {
+        "TITLE": "Users",
+        "DETAILS_BUTTON": "User details"
+    },
+    "USER_DETAILS": {
+        "ROLE": "Role",
+        "NONE": "None",
+        "ROLE_DEFAULT": "User (default)",
+        "ROLE_MANAGER": "Manager",
+        "SAVE_BUTTON": "Save changes",
+        "EDIT_BUTTON": "Edit"
+    },
+    "TASK": {
+        "TITLE": "Task",
+        "DETAILS": "Task details",
+        "DETAILS_BUTTON": "Task details",
+        "DELETE_BUTTON": "Delete task",
+        "EDIT_BUTTON": "Edit task",
+        "SAVE_BUTTON": "Save changes",
+        "DESCRIPTION": "Description",
+        "ASSIGNED_TO": "Assigned to",
+        "TYPE": "Task type",
+        "TYPE_OPTIONS_PERSONAL": "Personal",
+        "TYPE_OPTIONS_WORK": "Work",
+        "STATUS": "Status",
+        "STATUS_AWAITING": "Awaiting",
+        "STATUS_ACTIVE": "Active",
+        "STATUS_DONE": "Done",
+        "CREATED_ON": "Created on",
+        "STATUS_OPTIONS_TODO": "To do",
+        "STATUS_OPTIONS_IN_PROGRESS": "In progress",
+        "STATUS_OPTIONS_DONE": "Done"
+    },
+    "LOGIN": {
+        "TITLE": "Sign in",
+        "USERNAME": "Username",
+        "PASSWORD": "Password",
+        "SIGN_IN": "Sign in",
+        "QUESTION": "Don't have an account? ",
+        "ERROR_INVALID_CREDENTIALS": "Invalid username or password",
+        "REGISTER_BUTTON": "Register"
+    },
+    "REGISTER": {
+        "TITLE": "Register",
+        "USERNAME": "Username",
+        "PASSWORD": "Password",
+        "FIRST_NAME": "First name",
+        "LAST_NAME": "Last name",
+        "REGISTER_BUTTON": "Register",
+        "BACK_BUTTON": "Back"
+    },
+    "ERROR": {
+        "IS_REQUIRED": "is required"
+    }
+}

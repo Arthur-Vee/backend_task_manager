@@ -1,0 +1,75 @@
+{
+    "HOME": {
+        "WELCOME": "Добро пожаловать",
+        "TASK_LIST": "Список задач",
+        "USERS_LIST": "Список пользователей",
+        "CREATE_TASK": "Создать задачу",
+        "SIGN_OUT": "Выйти",
+        "LANGUAGES": "Языки"
+    },
+    "CREATE_TASK": {
+        "TITLE": "Создать задачу",
+        "TASK_TITLE": "Название",
+        "DESCRIPTION": "Описание",
+        "TYPE": "Тип",
+        "TYPE_OPTIONS_PERSONAL": "Личная",
+        "TYPE_OPTIONS_WORK": "Рабочая",
+        "ASSIGNED_TO": "Назначено",
+        "ERROR_REQUIRED": "обязательно",
+        "UNASSIGNED": "Не назначено"
+    },
+    "USERS": {
+        "TITLE": "Пользователи",
+        "DETAILS_BUTTON": "Детали пользователя"
+    },
+    "USER_DETAILS": {
+        "ROLE": "Роль",
+        "NONE": "Нет",
+        "ROLE_DEFAULT": "Пользователь (по умолчанию)",
+        "ROLE_MANAGER": "Менеджер",
+        "SAVE_BUTTON": "Сохранить изменения",
+        "EDIT_BUTTON": "Редактировать"
+    },
+    "TASK": {
+        "TITLE": "Задача",
+        "DETAILS": "Детали задачи",
+        "DETAILS_BUTTON": "Детали задачи",
+        "DELETE_BUTTON": "Удалить задачу",
+        "EDIT_BUTTON": "Редактировать задачу",
+        "SAVE_BUTTON": "Сохранить изменения",
+        "DESCRIPTION": "Описание",
+        "ASSIGNED_TO": "Назначено",
+        "TYPE": "Тип задачи",
+        "TYPE_OPTIONS_PERSONAL": "Личная",
+        "TYPE_OPTIONS_WORK": "Рабочая",
+        "STATUS": "Статус",
+        "STATUS_AWAITING": "Ожидает",
+        "STATUS_ACTIVE": "Активная",
+        "STATUS_DONE": "Выполнено",
+        "CREATED_ON": "Создано",
+        "STATUS_OPTIONS_TODO": "К выполнению",
+        "STATUS_OPTIONS_IN_PROGRESS": "В процессе",
+        "STATUS_OPTIONS_DONE": "Выполнено"
+    },
+    "LOGIN": {
+        "TITLE": "Войти",
+        "USERNAME": "Имя пользователя",
+        "PASSWORD": "Пароль",
+        "SIGN_IN": "Войти",
+        "QUESTION": "Нет аккаунта? ",
+        "ERROR_INVALID_CREDENTIALS": "Неверное имя пользователя или пароль",
+        "REGISTER_BUTTON": "Зарегистрироваться"
+    },
+    "REGISTER": {
+        "TITLE": "Регистрация",
+        "USERNAME": "Имя пользователя",
+        "PASSWORD": "Пароль",
+        "FIRST_NAME": "Имя",
+        "LAST_NAME": "Фамилия",
+        "REGISTER_BUTTON": "Зарегистрироваться",
+        "BACK_BUTTON": "Назад"
+    },
+    "ERROR": {
+        "IS_REQUIRED": "обязательно"
+    }
+}
