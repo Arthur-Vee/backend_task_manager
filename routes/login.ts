@@ -12,11 +12,7 @@ router.post("/", async (req: express.Request, res: express.Response) => {
     }
     try {
         const response = await database.signInUser(user)
-        res.status(200).json({
-            id: response.userId,
-            token: response.isLoogedIn,
-            user: response.user
-        })
+        res.status(200).json(response)
     } catch (error) {
         return res.status(401).json()
     }

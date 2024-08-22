@@ -27,8 +27,8 @@ router.get("/:id", async (req: express.Request, res: express.Response) => {
 router.post("/", async (req: express.Request, res: express.Response) => {
     try {
         const createNewTask: Task = await req.body
-        await database.createTask(createNewTask)
-        res.status(200).send()
+       const createdTask =  await database.createTask(createNewTask)
+        res.status(200).json(createdTask)
     } catch (error) {
         handleError(res, error)
     }

@@ -1,7 +1,6 @@
 import { Auth } from "../models/auth.model"
 import { UserModel } from "../models/user.model"
-import * as bcrypt from 'bcrypt'
-import UserService from "../services/users.service"
+import * as bcrypt from "bcrypt"
 
 export default class AuthService {
 
@@ -18,8 +17,8 @@ export default class AuthService {
             roles: 1
         })
         const logInData = {
-            isLoogedIn: "true",
-            userId: verifiedUser?.id,
+            token: "true",
+            id: verifiedUser?.id,
             user: returnUser
         }
         if (verifiedUser === null || undefined) {

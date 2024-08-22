@@ -49,7 +49,6 @@ router.post('/', async (req: express.Request, res: express.Response) => {
             lastName: req.body.lastName
         }
         const createdUser = await database.createUser(createNewUser)
-        console.log(createdUser)
         res.status(200).json(createdUser)
     } catch (error) {
         res.status(500).send()
