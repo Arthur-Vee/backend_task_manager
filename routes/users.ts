@@ -20,7 +20,7 @@ router.post("/:id", async (req: express.Request, res: express.Response) => {
     } catch (error) {
       return res.status(404).json(error)
     }
-  } else console.log("unauthorised")
+  } else return res.status(401).send()
 })
 router.patch("/", async (req: express.Request, res: express.Response) => {
   var adminToken = req.body.adminToken

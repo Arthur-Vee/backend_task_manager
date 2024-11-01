@@ -6,9 +6,13 @@ import ErrorHandler from "../errors/errorHandler"
 const router = express.Router()
 const database = new DatabaseService()
 
-router.get("/", async (req: express.Request, res: express.Response) => {
+router.post("/", async (req: express.Request, res: express.Response) => {
+  const userId: string = req.body.userId
+  if (!userId) {
+    return res.status(400).send({ error: "No user groups provided" })
+  }
   try {
-    const result = await database.getAllTasks()
+    const result = await database.getAllTasks(userId)
     res.status(200).json(result)
   } catch (error) {
     handleError(res, error)
@@ -24,7 +28,7 @@ router.get("/:id", async (req: express.Request, res: express.Response) => {
   }
 })
 
-router.post("/", async (req: express.Request, res: express.Response) => {
+router.post("/create", async (req: express.Request, res: express.Response) => {
   try {
     const createNewTask: Task = await req.body
     const createdTask = await database.createTask(createNewTask)
@@ -35,11 +39,12 @@ router.post("/", async (req: express.Request, res: express.Response) => {
 })
 
 router.delete("/:id", async (req: express.Request, res: express.Response) => {
-  const taskId = req.params.id
+  const taskId: string = req.params.id
+  const userId: string = req.params.userId
   try {
     var taskToDelete = taskId
     await database.deleteTask(taskToDelete)
-    const result = await database.getAllTasks()
+    const result = await database.getAllTasks(userId)
     res.status(200).json(result)
   } catch (error) {
     handleError(res, error)

@@ -1,75 +1,94 @@
 {
-    "HOME": {
-        "WELCOME": "Laipni lūdzam",
-        "TASK_LIST": "Uzdevumu saraksts",
-        "USERS_LIST": "Lietotāju saraksts",
-        "CREATE_TASK": "Izveidot uzdevumu",
-        "SIGN_OUT": "Izrakstīties",
-        "LANGUAGES": "Valodas"
-    },
-    "CREATE_TASK": {
-        "TITLE": "Izveidot uzdevumu",
-        "TASK_TITLE": "Nosaukums",
-        "DESCRIPTION": "Apraksts",
-        "TYPE": "Tips",
-        "TYPE_OPTIONS_PERSONAL": "Personīgs",
-        "TYPE_OPTIONS_WORK": "Darbs",
-        "ASSIGNED_TO": "Piešķirts",
-        "ERROR_REQUIRED": "ir nepieciešams",
-        "UNASSIGNED": "Nepiešķirts"
-    },
-    "USERS": {
-        "TITLE": "Lietotāji",
-        "DETAILS_BUTTON": "Lietotāja detaļas"
-    },
-    "USER_DETAILS": {
-        "ROLE": "Loma",
-        "NONE": "Nav",
-        "ROLE_DEFAULT": "Lietotājs (noklusējuma)",
-        "ROLE_MANAGER": "Vadītājs",
-        "SAVE_BUTTON": "Saglabāt izmaiņas",
-        "EDIT_BUTTON": "Rediģēt"
-    },
-    "TASK": {
-        "TITLE": "Uzdevums",
-        "DETAILS": "Uzdevuma detaļas",
-        "DETAILS_BUTTON": "Uzdevuma detaļas",
-        "DELETE_BUTTON": "Dzēst uzdevumu",
-        "EDIT_BUTTON": "Rediģēt uzdevumu",
-        "SAVE_BUTTON": "Saglabāt izmaiņas",
-        "DESCRIPTION": "Apraksts",
-        "ASSIGNED_TO": "Piešķirts",
-        "TYPE": "Uzdevuma tips",
-        "TYPE_OPTIONS_PERSONAL": "Personīgs",
-        "TYPE_OPTIONS_WORK": "Darbs",
-        "STATUS": "Statuss",
-        "STATUS_AWAITING": "Gaida",
-        "STATUS_ACTIVE": "Aktīvs",
-        "STATUS_DONE": "Pabeigts",
-        "CREATED_ON": "Izveidots",
-        "STATUS_OPTIONS_TODO": "Darāms",
-        "STATUS_OPTIONS_IN_PROGRESS": "Procesā",
-        "STATUS_OPTIONS_DONE": "Pabeigts"
-    },
-    "LOGIN": {
-        "TITLE": "Pieteikties",
-        "USERNAME": "Lietotājvārds",
-        "PASSWORD": "Parole",
-        "SIGN_IN": "Pieteikties",
-        "QUESTION": "Nav konta?",
-        "ERROR_INVALID_CREDENTIALS": "Nepareizs lietotājvārds vai parole",
-        "REGISTER_BUTTON": "Reģistrēties"
-    },
-    "REGISTER": {
-        "TITLE": "Reģistrēties",
-        "USERNAME": "Lietotājvārds",
-        "PASSWORD": "Parole",
-        "FIRST_NAME": "Vārds",
-        "LAST_NAME": "Uzvārds",
-        "REGISTER_BUTTON": "Reģistrēties",
-        "BACK_BUTTON": "Atpakaļ"
-    },
-    "ERROR": {
-        "IS_REQUIRED": "ir obligāts"
-    }
+  "HOME": {
+    "WELCOME": "Laipni lūdzam",
+    "TASK_LIST": "Uzdevumu saraksts",
+    "USERS_LIST": "Lietotāju saraksts",
+    "CREATE_TASK": "Izveidot uzdevumu",
+    "CREATE_GROUP": "Lietotāju grupas",
+    "SIGN_OUT": "Izrakstīties",
+    "LANGUAGES": "Valodas"
+  },
+  "CREATE_TASK": {
+    "TITLE": "Izveidot uzdevumu",
+    "TASK_TITLE": "Nosaukums",
+    "DESCRIPTION": "Apraksts",
+    "TYPE": "Tips",
+    "TYPE_OPTIONS_PERSONAL": "Personīgais",
+    "TYPE_OPTIONS_WORK": "Darba",
+    "ASSIGNED_TO": "Piešķirts",
+    "ERROR_REQUIRED": "ir obligāts",
+    "UNASSIGNED": "Nepiešķirts"
+  },
+  "CREATE_GROUP": {
+    "TITLE": "Izveidot lietotāju grupu",
+    "GROUP_TITLE": "Grupas nosaukums",
+    "DESCRIPTION": "Apraksts",
+    "GROUP_MEMBERS": "Pievienot dalībniekus",
+    "BUTTON_CREATE_GROUP": "Izveidot grupu",
+    "ERROR_REQUIRED": "ir obligāts"
+  },
+  "UPDATE_GROUP": {
+    "TITLE": "Lietotāju grupas",
+    "GROUP_TITLE": "Grupas nosaukums",
+    "DESCRIPTION": "Apraksts",
+    "GROUP_MEMBERS": "Pievienot dalībniekus",
+    "BUTTON_UPDATE_GROUP": "Atjaunināt grupu",
+    "BUTTON_DELETE_MEMBERS": "Dzēst dalībniekus",
+    "BUTTON_DELETE_GROUP": "Dzēst grupu",
+    "ERROR_REQUIRED": "ir obligāts"
+  },
+  "USERS": {
+    "TITLE": "Lietotāji",
+    "DETAILS_BUTTON": "Lietotāja detaļas"
+  },
+  "USER_DETAILS": {
+    "ROLE": "Loma",
+    "NONE": "Nav",
+    "ROLE_DEFAULT": "Lietotājs (noklusējums)",
+    "ROLE_MANAGER": "Menedžeris",
+    "SAVE_BUTTON": "Saglabāt izmaiņas",
+    "EDIT_BUTTON": "Rediģēt"
+  },
+  "TASK": {
+    "TITLE": "Uzdevums",
+    "DETAILS": "Uzdevuma detaļas",
+    "DETAILS_BUTTON": "Uzdevuma detaļas",
+    "DELETE_BUTTON": "Dzēst uzdevumu",
+    "EDIT_BUTTON": "Rediģēt uzdevumu",
+    "SAVE_BUTTON": "Saglabāt izmaiņas",
+    "DESCRIPTION": "Apraksts",
+    "ASSIGNED_TO": "Piešķirts",
+    "TYPE": "Uzdevuma tips",
+    "TYPE_OPTIONS_PERSONAL": "Personīgais",
+    "TYPE_OPTIONS_WORK": "Darba",
+    "STATUS": "Statuss",
+    "STATUS_AWAITING": "Gaidāms",
+    "STATUS_ACTIVE": "Aktīvs",
+    "STATUS_DONE": "Pabeigts",
+    "CREATED_ON": "Izveidots",
+    "STATUS_OPTIONS_TODO": "Veicams",
+    "STATUS_OPTIONS_IN_PROGRESS": "Procesā",
+    "STATUS_OPTIONS_DONE": "Pabeigts"
+  },
+  "LOGIN": {
+    "TITLE": "Pieteikties",
+    "USERNAME": "Lietotājvārds",
+    "PASSWORD": "Parole",
+    "SIGN_IN": "Pieteikties",
+    "QUESTION": "Nav konta?",
+    "ERROR_INVALID_CREDENTIALS": "Nederīgs lietotājvārds vai parole",
+    "REGISTER_BUTTON": "Reģistrēties"
+  },
+  "REGISTER": {
+    "TITLE": "Reģistrēties",
+    "USERNAME": "Lietotājvārds",
+    "PASSWORD": "Parole",
+    "FIRST_NAME": "Vārds",
+    "LAST_NAME": "Uzvārds",
+    "REGISTER_BUTTON": "Reģistrēties",
+    "BACK_BUTTON": "Atpakaļ"
+  },
+  "ERROR": {
+    "IS_REQUIRED": "ir obligāts"
+  }
 }

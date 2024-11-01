@@ -36,6 +36,7 @@ export default class UserService {
         firstName: 1,
         lastName: 1,
         roles: 1,
+        
       }
     )
     return user

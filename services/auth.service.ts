@@ -36,4 +36,8 @@ export default class AuthService {
         const getUser = await UserModel.findOne({ id: adminToken })
         return getUser?.roles.includes("ADMIN")
     }
+    async verifyManager(managerToken: string) {
+        const getUser = await UserModel.findOne({ id: managerToken })
+        return getUser?.roles.includes("MANAGER")
+    }
 }

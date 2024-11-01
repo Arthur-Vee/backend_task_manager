@@ -1,9 +1,11 @@
 require("dotenv").config()
 import mongoose from "mongoose"
-import { Task } from "../models/task.model"
+import { Task, taskSchema } from "../models/task.model"
 import { v4 as uuidv4 } from "uuid"
 import TaskNotFoundError from "../errors/taskNotFoundError"
 import ErrorHandler from "../errors/errorHandler"
+import { UserGroupModel } from "../models/userGroup.model"
+import AuthService from "./auth.service"
 
 mongoose.connection.on("connected", () => console.log("Task: connected"))
 mongoose.connection.on("open", () => console.log("Task: open"))
@@ -14,22 +16,32 @@ mongoose.connection.on("disconnecting", () =>
 )
 mongoose.connection.on("close", () => console.log("Task: close"))
 
-const taskSchema = new mongoose.Schema({
-  id: String,
-  title: String,
-  description: String,
-  type: String,
-  createdOn: String,
-  status: String,
-  assignedTo: String,
-})
-
 const TaskModel = mongoose.model("Task", taskSchema)
+const auth = new AuthService()
 
 export default class TasksService {
-  async getAllTasks() {
-    return await TaskModel.find({})
+  async getAllTasks(userId: string) {
+    const isAdmin = await auth.verifyAdmin(userId)
+    const isManager = await auth.verifyManager(userId)
+    const userGroups = await UserGroupModel.find({ groupMembers: userId })
+    const groupIds = userGroups.map((group) => group.groupId)
+    try {
+      if (isAdmin) {
+        return await TaskModel.find({})
+      }
+      if (isManager) {
+        return await TaskModel.find({})
+      }
+      if (userGroups.length === 0) {
+        return []
+      }
+      return await TaskModel.find({ assignedTo: { $in: groupIds } })
+    } catch (error) {
+      console.error("Error fetching tasks for user:", error)
+      throw error
+    }
   }
+
   async getIndividualTask(taskId: string) {
     var task = await TaskModel.findOne({ id: taskId })
     if (task == null || task == undefined) {
