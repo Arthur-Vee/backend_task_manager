@@ -26,10 +26,7 @@ export default class TasksService {
     const userGroups = await UserGroupModel.find({ groupMembers: userId })
     const groupIds = userGroups.map((group) => group.groupId)
     try {
-      if (isAdmin) {
-        return await TaskModel.find({})
-      }
-      if (isManager) {
+      if (isAdmin || isManager) {
         return await TaskModel.find({})
       }
       if (userGroups.length === 0) {

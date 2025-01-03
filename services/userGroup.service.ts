@@ -27,9 +27,13 @@ export default class UserGroupService {
       groupDescription: userGroupData.groupDescription,
       groupMembers: userGroupData.groupMembers,
     })
-    var createdGroupName = userGroupData.groupName
+    let createdGroup = {
+      groupName:userGroupData.groupName,
+      groupDescription:userGroupData.groupDescription,
+      groupMembers:userGroupData.groupMembers
+    }
     if (creatingUserGroup) {
-      return { createdGroupName }
+      return { createdGroup }
     } else {
       throw new ErrorHandler()
     }
