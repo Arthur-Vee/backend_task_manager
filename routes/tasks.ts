@@ -2,13 +2,14 @@ import express from "express"
 import DatabaseService from "../services/tasks.service"
 import { Task } from "../models/task.model"
 import ErrorHandler from "../errors/errorHandler"
+import authorize from "../middleware/authorize"
 
 const router = express.Router()
 const database = new DatabaseService()
-
-router.get("/", async (req: express.Request, res: express.Response) => {
+router.post("/",authorize(["USER"]), async (req: express.Request, res: express.Response) => {
+  const userId: string = req.body.userId
   try {
-    const result = await database.getAllTasks()
+    const result = await database.getAllTasks(userId)
     res.status(200).json(result)
   } catch (error) {
     handleError(res, error)
@@ -24,9 +25,9 @@ router.get("/:id", async (req: express.Request, res: express.Response) => {
   }
 })
 
-router.post("/", async (req: express.Request, res: express.Response) => {
+router.post("/create",authorize(["ADMIN"]), async (req: express.Request, res: express.Response) => {
   try {
-    const createNewTask: Task = await req.body
+    const createNewTask: Task = await req.body.task
     const createdTask = await database.createTask(createNewTask)
     res.status(200).json(createdTask)
   } catch (error) {
@@ -34,19 +35,20 @@ router.post("/", async (req: express.Request, res: express.Response) => {
   }
 })
 
-router.delete("/:id", async (req: express.Request, res: express.Response) => {
-  const taskId = req.params.id
+router.delete("/:id",authorize(["ADMIN"]), async (req: express.Request, res: express.Response) => {
+  const taskId: string = req.params.id
+  const userId: string = req.params.userId
   try {
     var taskToDelete = taskId
     await database.deleteTask(taskToDelete)
-    const result = await database.getAllTasks()
+    const result = await database.getAllTasks(userId)
     res.status(200).json(result)
   } catch (error) {
     handleError(res, error)
   }
 })
 
-router.patch("/", async (req: express.Request, res: express.Response) => {
+router.patch("/",authorize(["ADMIN","MANAGER"]), async (req: express.Request, res: express.Response) => {
   const updatedTaskData: Task = req.body
   try {
     const result = await database.updateTask(updatedTaskData)
