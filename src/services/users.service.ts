@@ -32,12 +32,13 @@ export default class UserService {
       { id: userId },
       {
         _id: 0,
+        id: 1,
         username: 1,
         firstName: 1,
         lastName: 1,
         roles: 1,
       }
-    ) 
+    )
     return user
   }
 
