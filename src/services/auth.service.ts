@@ -11,6 +11,7 @@ export default class AuthService {
       { username: user.username },
       {
         _id: 0,
+        id: 1, // TODO: This might need to be 0 for security reasons
         username: 1,
         firstName: 1,
         lastName: 1,
